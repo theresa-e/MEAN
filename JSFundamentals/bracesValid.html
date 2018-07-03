@@ -1,0 +1,30 @@
+<script>
+    function bracesValid(str) {
+        var arr = [];
+        console.log("str.length " + str.length)
+        for (var i = 0; i < str.length; i++) {
+            if (str[i] === "{" || str[i] === "(" || str[i] === "[") {
+            console.log("i " + i);
+            arr.push(str[i]);
+            console.log(arr);
+            } else if (str[i] == "}") {
+                if (arr.pop() != "{") {
+                    return false;
+                }
+            } else if (str[i] == "]") {
+                if (arr.pop() != "[") {
+                    return false;
+                }
+            } else if (str[i] == ")") {
+                if (arr.pop() != "(") {
+                    return false;
+                }
+            }
+        }
+        if (arr.length == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>

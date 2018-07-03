@@ -1,0 +1,21 @@
+<script>
+    // take parameter n 
+    
+    // if divisible by 3 and 5 = "FizzBuzz" 
+    // if divisible by 3 but NOT 5 = "Fizz" 
+    // if divisible by 5 and not 3 = "Buzz"
+
+    function fizzBuzz(num) {
+        for (var i = 1; i <= num; i++) {
+            if (i % 15 == 0) { // if divisible by both 
+                console.log("FizzBuzz");
+            } else if (i % 3 == 0) {
+                console.log("Fizz");
+            } else if (i % 5 == 0) {
+                console.log("Buzz");
+            } else {
+                console.log(i);
+            }
+        }
+    }
+</script>

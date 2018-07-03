@@ -1,0 +1,18 @@
+<script>
+    function bubbleSort(arr) {
+        for (var i = 0; i < arr.length; i++) { // goes through entire arr
+            console.log("ITERATION #" + i + ": " + arr);
+            console.log("Current Value of i: " + arr[i]);
+            console.log("i:  " + i);
+            console.log("------");
+            for (var j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) { // check if left num > right num
+                    var temp = arr[j]; // if so, swap them with the help of temp.
+                    arr[j] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+</script>

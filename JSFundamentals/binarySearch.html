@@ -1,0 +1,18 @@
+<script>
+
+    function binarySearch(arr, num){
+        var start = 0;
+        var end = arr.length-1; 
+        while (start <= end){ // while we have indices left to search
+            var mid = start + Math.floor((end-start)/2)
+            if (arr[mid] === num){ // if we land on our target val, we reutrn that val.
+                return mid;
+            } if (arr[mid] < num){
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+
+            }
+        } return -1; // Num was not in our array.
+    }
+</script>

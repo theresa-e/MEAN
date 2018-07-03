@@ -1,0 +1,28 @@
+<script>
+    // given an amount of cents
+    // return the optimal configuration of coins in an object
+
+    function coinChange(cents) {
+        var dollars = 0;
+        var quarters = 0;
+        var dimes = 0;
+        var nickels = 0;
+        var pennies = 0;
+        var change = cents % 100;
+
+        dollars = Math.floor(cents/100);
+        quarters = Math.floor(change/25);
+        change = change % 25;
+        dimes = Math.floor(change/10);
+        change = change % 10;
+        nickels = Math.floor(change/5);
+        change = change % 5;
+        pennies = change;
+        return {"dollars" : dollars,
+                "quarters" : quarters,
+                "dimes" : dimes,
+                "nickels" : nickels,
+                "pennies" : pennies
+        }
+    }
+</script>
