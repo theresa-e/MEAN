@@ -1,0 +1,22 @@
+<script>
+    // Implement a min heap
+    // Be able to insert values into a min heap
+
+    function insertIntoHeap(arr, num){
+        if (arr.length == 0){
+            arr[0] = null;
+            arr.push(num);
+            return arr;
+        } else {
+            arr.push(num);
+            var index = arr.length-1; // get index of num we just added 
+            while (arr[Math.floor(index/2)] > num && index > 1){ // check if parent index is greater than num
+                var temp = arr[Math.floor(index/2)] // swap values
+                arr[Math.floor(index/2)] = num;
+                arr[index] = temp;
+                index = Math.floor(index/2); // reassign index
+            }
+            return arr;
+        }
+    }
+</script>

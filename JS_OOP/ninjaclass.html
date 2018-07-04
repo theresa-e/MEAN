@@ -1,0 +1,41 @@
+<script>
+    function Ninja(name) {
+        var speed = 3; // var used for private variables
+        var strength = 3;
+        this.health = 100;
+        this.name = name;
+
+        this.getSpeed = function () { // getter
+            return speed;
+        }
+        this.getStrength = function () { //**
+            return strength;
+        }
+        this.showStats = function () {
+            console.log("Speed: " + this.getSpeed());
+            console.log("Strength: " + this.getStrength());
+            console.log(this.sayName() + this.health)
+        }
+        this.sayName = function () {
+            return this.name;
+        }
+        this.drinkSake = function () {
+            this.health += 10;
+            return this.health;
+        }
+    }
+
+    var ninja1 = new Ninja("Theresa");
+    var ninja2 = new Ninja("Andre");
+
+    Ninja.prototype.punch = function(ninja){
+        ninja.health -= 5;
+        console.log(this);
+        console.log(this.sayName() + " punched " + ninja.sayName() + " and lost 5 health!");
+    }
+
+    Ninja.prototype.kick = function(ninja){
+        this.strength -= 15; // this refers to the calling ninja
+        console.log(ninja.sayName() + " was kicked by " + this.sayName() + " and lost 15 health.");
+    }
+</script>
