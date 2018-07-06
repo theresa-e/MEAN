@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sushi Information</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/styles.css" />
+</head>
+
+<body>
+    <!-- main wrapper -->
+    <div class="wrapper">
+        <h1>Sushi Information</h1>
+        <img src="/images/sushi<%= info[0].id%>.jpg" />
+        <p>
+            <%= info[0].name %>
+        </p>
+            Ingredients:
+            <ul>
+                <% for (var i = 0; i<info[0].ingredients.length; i++){ %>
+                    <li>
+                        <%= info[0].ingredients[i] %>
+                    </li>
+                <% } %>
+            </ul>
+        <p>
+            Price:
+            <%= info[0].price %>
+        </p>
+    </div>
+</body>
+
+</html>
