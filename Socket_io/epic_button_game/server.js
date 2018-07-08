@@ -22,18 +22,26 @@ app.set('views', path.join(__dirname, './views'));
 const io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
-    socket.on('surveyResults', function (data) {
-        console.log(data);
-        var randomNum = Math.floor((Math.random() * 1000) + 1);
-        data.randomNum = randomNum;
-        socket.emit('response', data)
+    var count = 0;
+
+    // increment count
+    socket.on('increase', function (data) {
+        count++;
+        var updatedCount = {count: count}
+        socket.emit('updatedCount', updatedCount);
     });
+
+    // reset count to 0
+    socket.on('reset', function(data){
+        count = 0;
+        var updatedCount = {count: count}
+        socket.emit('zeroCount', updatedCount);
+    })
 });
 
 // ---------- Static Views ----------
 app.use(express.static(__dirname + '/static'));
 
 app.get('/', function (req, res) {
-    res.render('survey');
+    res.render('index');
 })
-
