@@ -15,11 +15,16 @@
             var name = prompt('Enter your name to begin chatting!');
             var userInfo;
 
+            // When user enters chat, pass name to server
             socket.emit('newUser', {
                 name: name
             });
             console.log(name);
+            
+            // Display name on page
             $('#name').html(name);
+
+            // Add existing message log to #chatbox div after they enter chat.
             socket.on('msgLog', function (data) {
                 console.log(data)
                 for (var i = 0; i < data.msgs.length; i++) {
@@ -28,6 +33,7 @@
                 }
             });
 
+            // For each new message added, send it to server to add to message log.
             $('#new-message').submit(function () {
                 var msgContents = $('#msg').val()
                 socket.emit('newMsg', {
@@ -37,11 +43,12 @@
                 $('#msg').val('');
                 return false;
             });
+
+            // Get new messages to add to the div (will go at bottom of existing msg log).
             socket.on('getNewMsg', function (data) {
                 var newMessage = $("<p><strong>" + data.user + "</strong>: " + data.message + "</p>").hide();
                 $('#chatbox').append(newMessage);
                 newMessage.fadeIn(1000);
-                
             });
         });
     </script>
