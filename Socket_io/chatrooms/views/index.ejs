@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function () {
+                    var socket = io(); // instantiate socket
+                    var userinfo;
+                    var name = prompt('What is your name? :)')
+                    socket.emit('new', {
+                        name: name
+                    });
+                    socket.on('myUserInfo', function (data) {
+                        userinfo = data;
+                        console.log('this user: ', userinfo)
+                    })
+                    socket.on('currentUsers', function (data) {
+                        console.log(data.users);
+                        for (var i = 0; i < data.users.length; i++) {
+                            $('#main').append("<div class='user-info' id='" + data.users[i].userId + "'><h3>" +
+                                data.users[i].name + "</h3></div>");
+                        }
+                    })
+                    socket.on('newUserAdded', function (data) {
+                            console.log('new user added');
+                            console.log(data.newUser.name)
+                            $('#main').append("")
+                            $('#main').append("<div class = 'user-info' id ='" + data.newUser.id + "'><h3>" + data.newUser.name + "</h3></div>");
+                        })
+                    socket.emit('disconnect', userinfo);
+                    socket.on('userDisconnected', function(data){
+                        console.log(data)
+                        $('#'+data.userId).remove();
+                    })
+                })
+    </script>
+</head>
+
+<body>
+    <div class="wrapper" id="main">
+
+    </div>
+</body>
+
+</html>
