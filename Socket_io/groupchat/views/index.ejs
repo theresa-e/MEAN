@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Group Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function () {
+            var socket = io(); // instantiate socket
+            var name = prompt('Enter your name to begin chatting!');
+            var userInfo;
+
+            socket.emit('newUser', {
+                name: name
+            });
+            console.log(name);
+            $('#name').html(name);
+            socket.on('msgLog', function (data) {
+                console.log(data)
+                for (var i = 0; i < data.msgs.length; i++) {
+                    $('#chatbox').append("<p><strong>" + data.msgs[i].user + "</strong>: " + data.msgs[i].message +
+                        "</p>");
+                }
+            });
+
+            $('#new-message').submit(function () {
+                var msgContents = $('#msg').val()
+                socket.emit('newMsg', {
+                    user: name,
+                    message: msgContents
+                })
+                $('#msg').val('');
+                return false;
+            });
+            socket.on('getNewMsg', function (data) {
+                var newMessage = $("<p><strong>" + data.user + "</strong>: " + data.message + "</p>").hide();
+                $('#chatbox').append(newMessage);
+                newMessage.fadeIn(1000);
+                
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="wrapper" id="main">
+        <h1>Group Chat 🗣</h1>
+        <div class="chatbox" id="chatbox">
+        </div>
+        <p>Welcome <span id="name"></span>! :)</p>
+        <form id="new-message">
+            <input type="text" id="msg">
+            <input type="submit" value="Send">
+        </form>
+    </div>
+</body>
+
+</html>
