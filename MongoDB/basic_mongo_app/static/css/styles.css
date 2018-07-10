@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+.wrapper {
+    font-family: "Quicksand";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons {
+    display: inline-block;
+}
+
+.user-info {
+    border: 1px solid #ce63b1;
+    padding: 10px;
+    width: 200px;
+    margin: 5px 0;
+    min-height: 100px;
+    display: inline-block;
+}
+
+table {
+    border: 1px solid grey;
+}
+
+h1, h3 {
+    color: #ce82ba;
+    text-align: center;
+}
+
+h2 {
+    font-size: 4rem;
+    color: #ce63b1;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+
+textarea {
+    height: 100px;
+    display: block;
+    width: 325px;
+    margin: 10px 0px;
+}
+
+input, select, option {
+    height: 30px;
+    display: block;
+    width: 325px;
+    margin: 10px 0px;
+}
+
+.btn {
+    background: #e2c3d9;
+    padding: 5px 10px;
+    width: 375px;
+    height: 50px;
+    color: #ce82ba;
+    font-size: 1rem;
+    margin: 5px;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
