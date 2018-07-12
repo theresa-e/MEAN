@@ -13,14 +13,25 @@
 
 <body>
     <div class="wrapper">
+<!-- tip to easily see objects printed in full instead of [object Object] -->
+<% JSON.stringify(messages) %>
+    <!-- based on the structure of your messages, determine how to display them -->
+    <% if(messages.registration) { %>
+        <% for (var x of messages.registration) { %>
+            <h3>
+                <%= x %>
+            </h3>
+            <% } %>
+                <% } %>
         <h1>Add a new elephant</h1>
-        <form action="/elephants" method="post">
-            <label for="name">Name:</label>
-            <input type="text" name="name">
-            <label for="age">Age:</label>
-            <input type="number" name="age">
-            <input type="submit" value="Add Elephant">
-        </form>
+
+                            <form action="/elephants" method="post">
+                                <label for="name">Name:</label>
+                                <input type="text" name="name">
+                                <label for="age">Age:</label>
+                                <input type="number" name="age">
+                                <input type="submit" value="Add Elephant">
+                            </form>
     </div>
 </body>
 

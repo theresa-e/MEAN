@@ -6,6 +6,21 @@ const app = express();
 const server = app.listen(7000);
 console.log("Running at port 7000...");
 
+// ---------- Flash ----------
+var flash = require("express-flash");
+app.use(flash());
+
+// ---------- Session ----------
+var session = require('express-session');
+app.use(session({
+    secret: 'keyboardkitteh',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 60000
+    }
+}))
+
 // ---------- Body Parser ----------
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -27,14 +42,19 @@ mongoose.connect('mongodb://localhost/elephantCRUD');
 mongoose.Promise = global.Promise;
 var ElephantSchema = new mongoose.Schema({ // JS object that defines the schema (blueprint) 
     name: {
-        type: String
+        type: String,
+        required: true,
+        minlength: 5
     },
     age: {
-        type: Number
+        type: Number,
+        required: true,
+        min: 1,
+        max: 100
     }
 }, {
     timestamps: true
-})
+});
 mongoose.model('Elephant', ElephantSchema)
 var Elephant = mongoose.model('Elephant');
 
@@ -89,6 +109,10 @@ app.post('/elephants', function (req, res) {
     elephant.save(function (err) {
         if (err) {
             console.log("Error - please check form submission.");
+            for (var key in err.errors){
+                req.flash('registration', err.errors[key].message);
+            }
+            res.render('add');
         } else {
             console.log("Added a new quote to database:");
             console.log(elephant);
@@ -99,27 +123,40 @@ app.post('/elephants', function (req, res) {
 
 // Delete an elephant from the database
 app.post('/delete/:id', function (req, res) {
-    Elephant.find({_id: req.params.id}).remove().exec(); // .exec() executes the query
+    Elephant.find({
+        _id: req.params.id
+    }).remove().exec(); // .exec() executes the query
     res.redirect('/')
 });
 
 // Route to form to edit elephant, prepopulate form.
 app.post('/edit/:id', function (req, res) {
-    Elephant.find({_id: req.params.id}, function(err, elephant){
-        if (err){
+    Elephant.find({
+        _id: req.params.id
+    }, function (err, elephant) {
+        if (err) {
             console.log("Error - couldn't find elephant to update.");
         } else {
-            res.render("edit", {elephant:elephant});
+            res.render("edit", {
+                elephant: elephant
+            });
         }
-    }); 
+    });
 });
 
 // Update/submit elephant document. 
 app.post('/update/:id', function (req, res) {
     console.log('request.body: ', req.body)
     console.log('request params id ', req.params.id)
-    Elephant.updateOne({_id: req.params.id}, {$set: {name: req.body.name, age: req.body.age}}, function(err, result){
-        if (err){
+    Elephant.updateOne({
+        _id: req.params.id
+    }, {
+        $set: {
+            name: req.body.name,
+            age: req.body.age
+        }
+    }, function (err, result) {
+        if (err) {
             throw err;
         }
     });
