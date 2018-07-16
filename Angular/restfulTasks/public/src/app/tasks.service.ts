@@ -15,9 +15,7 @@ export class TasksService {
   }
 
   getTasks(){
-    const tempObservable = this._tasks.get('/tasks'); 
-    tempObservable.subscribe(res => 
-      console.log('Got tasks: ', res));
+    return this._tasks.get('/tasks'); 
   }
 
   deleteTask(id: string){ // no need to say public/private outside of constructor
