@@ -2,10 +2,30 @@
 .wrapper {
     margin: auto 0;
     font-family: "Roboto";
-    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title {
+    font-size: 36px;
+}
+
+.task-info {
+    border: 1px solid plum;
+    width: 500px;
+    padding: 10px;
+    margin: 5px 0;
     text-align: center;
-    font-size: 28px;
+}
+button {
+    border: none;
+    background-color: #8a5bac;
+    color: #fff;
+    width: 200px;
+    height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 10px;
+    
 }

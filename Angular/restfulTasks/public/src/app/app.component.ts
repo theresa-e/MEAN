@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import { TasksService } from './tasks.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,15 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
   tasks = [];
+  taskById = [];
   constructor(private _tasksService: TasksService){}
 
-  ngOnInit(){
-    this.getTaskFromService();
-  }
-
-  getTaskFromService(){
+  // Display all tasks when user clicks a button.
+  getTasks(): void{
+    console.log('Button was clicked.')
     let observable = this._tasksService.getTasks();
     observable.subscribe(res => {
       console.log('Response from service: ', res);
@@ -24,4 +21,18 @@ export class AppComponent implements OnInit {
     })
     this._tasksService.getTasks();
   }
+
+  // Display task description based on id
+  showDetails(id: string): void{
+    console.log('Show detail button was clicked.');
+    console.log(`TASK ID: ${id}`);
+    let observable = this._tasksService.findbyID(id);
+    observable.subscribe(res => {
+      console.log('Response from service: ', res);
+      if (res.message == "Success"){
+        this.taskById = res['foundTask'];
+      }
+    })
+  }
+
 }

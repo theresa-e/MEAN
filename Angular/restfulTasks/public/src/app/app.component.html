@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Restful Tasks Continued</title>
-</head>
-<body>
-  <!-- main wrapper -->
-  <div class="wrapper">
-    <h2 class="title">All the tasks:</h2>
-    <ul>
-      <li *ngFor="let tasks of tasks">{{tasks.title}} - {{tasks.description}}</li>
-    </ul>
-
-    <h2 class="title">The fourth task:</h2>
-    {{ tasks[3].title }} - {{ tasks[3].description }}
-
+<!-- main wrapper -->
+<div class="wrapper">
+  <h1 class="title">Restful Tasks API</h1>
+  <button (click)="getTasks()">Get All Task</button>
+  <div class="task-info" *ngFor="let task of tasks">
+    <h2>
+      {{ task.title }}
+    </h2>
+    <button (click)="showDetails(task._id)">View Details</button>
   </div>
-</body>
-</html>
+  <div class="task-info">
+    <h2>Task Info:</h2>
+    <p>Title: {{ taskById.title}} </p>
+    <p>Description: {{ taskById.description }}</p>
+  </div>
+</div>

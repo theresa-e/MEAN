@@ -6,16 +6,14 @@ import { HttpClient } from '@angular/common/http'
 })
 export class TasksService {
   constructor(private _tasks: HttpClient) {
-    this.getTasks();
-    this.deleteTask('5b490591bea31e2edd8784f0'); // for now, pass in ID manually
-    this.createTask({
-      title: 'Test task',
-      description: 'Test descript',
-    })
   }
 
   getTasks(){
-    return this._tasks.get('/tasks'); 
+    return this._tasks.get('/tasks');
+  }
+
+  findbyID(id: string){
+    return this._tasks.get('/tasks/' + id);
   }
 
   deleteTask(id: string){ // no need to say public/private outside of constructor
