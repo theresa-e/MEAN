@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { GoldService } from './gold.service';
+
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TasksService } from './tasks.service';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule
   ],
-  providers: [GoldService],
+  providers: [TasksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
