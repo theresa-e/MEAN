@@ -9,8 +9,8 @@
     <button (click)="showDetails(task._id)">View Details</button>
   </div>
   <div class="task-info">
-    <h2>Task Info:</h2>
-    <p>Title: {{ taskById.title}} </p>
-    <p>Description: {{ taskById.description }}</p>
+    <app-task [taskToShow]="taskById">
+    </app-task>
+
   </div>
 </div>

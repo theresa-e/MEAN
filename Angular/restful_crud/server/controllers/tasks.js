@@ -69,37 +69,39 @@ module.exports = {
     },
 
     // Update by ID
-    updateTask: (req, res) => {
-        console.log('red.body: ', req.body)
-        Task.findOne({
-            _id: req.params.id // get task to update
-        }, (err, task) => {
-            console.log(task)
+    updateTask: function (req, res) {
+        console.log("I'm going to update", req.body);
+        Task.findOneAndUpdate({
+            _id: req.body._id
+        }, {
+            $set: {
+                title: req.body.title,
+                description: req.body.description,
+                completed: req.body.completed
+            }
+        }, function (err, updatedTask) {
+            // updatedTask.save(function (err, updatedTask){
             if (err) {
-                console.log('------ Errors: Could not find task by ID.')
+                console.log("Updating wasn't working my dear.", err);
+                res.json({
+                    message: "Error",
+                    error: err
+                });
+            }
+            if (updatedTask == null) {
+                console.log("Your task is not found");
                 res.json({
                     message: "Error"
                 })
             } else {
-                console.log('------REQ BODY: ', req.body);
-                task.title = req.body.title;
-                task.description = req.body.description;
-                task.save((err) => {
-                    if (err) {
-                        console.log('udpated task', task)
-                        console.log('------ Error: Could not save new task info.');
-                        res.json({
-                            message: "Errors"
-                        })
-                    } else {
-                        res.json({
-                            message: "Task has been updated.",
-                            task: task
-                        })
-                    }
-                })
+                console.log("You're task is updated", updatedTask);
+                res.json({
+                    message: "Updated",
+                    updatedTask: updatedTask
+                });
             }
-        })
+        });
+
     },
 
     // Delete task by ID.
