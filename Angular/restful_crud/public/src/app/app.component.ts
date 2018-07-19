@@ -10,6 +10,7 @@ export class AppComponent {
   newTask: any;
   allTasks: any;
   editTask: any;
+
   constructor(private _tasksService: TasksService) { }
 
   // On page load
@@ -17,7 +18,6 @@ export class AppComponent {
     this.newTask = { title: "", description: "" }
     this.getTasks();
   }
-
 
   onSubmit() {
     console.log('newTask: ', this.newTask)
@@ -35,7 +35,6 @@ export class AppComponent {
       this.editTask = res['foundTask'];
     })
     this.getTasks();
-
   }
 
   // Update task based on form input.
@@ -48,12 +47,12 @@ export class AppComponent {
   }
 
   // Display all tasks when user clicks a button.
-  getTasks(): void {
+  getTasks(): void { 
     let observable = this._tasksService.getTasks();
-    observable.subscribe(res => {
+    observable.subscribe(res =>  {
       console.log('Response from service: ', res);
       this.allTasks = res['tasks'];
-    })
+    }) 
     this._tasksService.getTasks();
   }
 
@@ -74,7 +73,7 @@ export class AppComponent {
     let observable = this._tasksService.createTask(task);
     observable.subscribe(res => {
     });
-    this.getTasks();
+    this.getTasks ();
   }
 
   // Delete task

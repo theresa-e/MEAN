@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     this.newCake = { name: "", bakersName: "", imageURL: "", rating: "" } // reset values
     this.cakeDetails = {}
     this.getCakes();
-  }
+  } 
 
   // Get all cakes
   getCakes(): void {

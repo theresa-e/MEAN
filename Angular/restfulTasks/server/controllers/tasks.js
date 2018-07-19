@@ -53,7 +53,7 @@ module.exports = {
         })
         task.save(function (err) {
             if (err) {
-                console.log('------- Error: Could not save this user.');
+                console.log('------- Error: Could not save this task.');
                 console.log(task);
                 res.json({
                     message: "Error",

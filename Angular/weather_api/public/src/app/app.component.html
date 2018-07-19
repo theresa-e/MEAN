@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <h1>Weather API</h1>
+  <div class="nav">
+    <a [routerLink]="['/seattle']">Seattle, WA</a>
+    <a [routerLink]="['/sanjose']">San Jose, CA</a>
+    <a [routerLink]="['/chicago']">Chicago, IL</a>
+    <a [routerLink]="['/portland']">Portland, OR</a>
+    <a [routerLink]="['/washington']">Washington DC</a>
+    <a [routerLink]="['/phoenix']">Phoenix, AZ</a>
+  </div>
+  
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
