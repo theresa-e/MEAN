@@ -3,7 +3,6 @@
 
   <!-- Left section -->
   <section class="left">
-
     <!-- Create new cake -->
     <div class="main-content">
       <h2>Create a new cake</h2>
@@ -23,7 +22,6 @@
         <button type="submit">Add Cake</button>
       </form>
     </div>
-
     <!-- Details on specific cake -->
     <div class="main-content">
       <h2>
@@ -35,7 +33,7 @@
 
   <!-- Right section -->
   <section class="right">
-    <!-- Information about cakes -->
+    <!-- Information about all cakes -->
     <div class="main-content">
       <h2>All cakes:</h2>
       <span *ngFor="let cake of allCakes" class="cake-info">
@@ -48,21 +46,24 @@
         </a>
         <p>
           <button (click)="showCommentRatingForm(cake._id)">Leave a review/rating</button>
-          <form *ngIf="showForm == cake._id" (submit)="createRatingAndComment(cake._id)">
-            <p>
-              <label for="comment">Comments</label>
-              <input type="text" name="cakeComment.text" [(ngModel)]="cakeComment.text">
-            </p>
-            <p>
-              <label for="rating">Rating</label>
-              <input type="number" name="newRating.value" [(ngModel)]="newRating.value">
-            </p>
-            <p *ngIf="true">
-              <button type="submit">Submit Rating and Review</button>
-            </p>
-          </form>
-          <hr>
+        </p>
+        <!-- Create rating/comment form (only displays if 'leave review/rating' is clicked) -->
+        <form *ngIf="showForm == cake._id" (submit)="createRatingAndComment(cake._id)">
+          <p>
+            <label for="comment">Comments</label>
+            <input type="text" name="cakeComment.text" [(ngModel)]="cakeComment.text">
+          </p>
+          <p>
+            <label for="rating">Rating</label>
+            <input type="number" name="newRating.value" [(ngModel)]="newRating.value">
+          </p>
+          <p *ngIf="true">
+            <button type="submit">Submit Rating and Review</button>
+          </p>
+        </form>
+        <hr>
       </span>
     </div>
   </section>
+  
 </div>

@@ -4,7 +4,6 @@ require('../models/cake.js')
 
 module.exports = {
     // Create a new cake
-
     createCake: (req, res) => {
         var cake = new Cake({
             name: req.body.name,
@@ -13,7 +12,7 @@ module.exports = {
         })
         cake.save((err) => {
             if (err) {
-                console.log('Error: Could not save this cake.');
+                console.log('Error ---- Could not save this cake.');
                 console.log(cake);
                 res.json({
                     message: "Error",
@@ -32,7 +31,7 @@ module.exports = {
     getAll: (req, res) => {
         Cake.find({}, (err, cakes) => {
             if (err) {
-                console.log("Error: Could not find all cakes.");
+                console.log("Error ---- Could not find all cakes.");
                 res.json({
                     message: "Error",
                     error: err
@@ -52,13 +51,13 @@ module.exports = {
             _id: req.params.id
         }, (err, cake) => {
             if (err) {
-                console.log('Error: Coulnd not find a cake by that ID.');
+                console.log('Error ---- Could not find a cake by that ID.');
                 res.json({
                     message: "Error",
                     errors: err
                 });
             } else {
-                console.log('Success: Found cake.');
+                console.log('Success ---- Found cake.');
                 res.json({
                     message: "Success",
                     cake: cake
@@ -69,8 +68,6 @@ module.exports = {
 
 
     addRating: (req, res) => {
-        console.log('in rating in cakes.js')
-        console.log('red.body: ', req.body)
         Cake.findOneAndUpdate({
             _id: req.params.id
         }, {

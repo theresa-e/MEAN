@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   newCake: any;
   cakeDetails: any;
   cakeDetailsRating: string;
-  cakeComment: any = {text: ''};
+  cakeComment: any = { text: '' };
   newRating: any = { value: 0 };
   ratingID: any;
   showForm: string;
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.newCake = { name: "", bakersName: "", imageURL: "", rating: "" } // reset values
     this.cakeDetails = {}
-    this.getCakes();
+    this.getCakes(); // Have list of cakes on page once loaded.
   } 
 
   // Get all cakes
@@ -76,6 +76,7 @@ export class AppComponent implements OnInit {
     console.log('Showing the form.');
     this.showForm = id;
   }
+
   // Calculate and set rating
   calculateRating(): void{
     var ratings = this.cakeDetails['ratings'];
@@ -84,8 +85,9 @@ export class AppComponent implements OnInit {
     for (var i=0; i<ratings.length; i++){
       sum += parseInt(ratings[i]);
     }
-    console.log('sum is: ', sum)
+    console.log('Sum is: ', sum)
     var avg = sum / ratings.length
-    this.cakeDetailsRating = avg.toFixed(2);
+    this.cakeDetailsRating = avg.toFixed(2); // Limit average to two decimal places (ex. 3.67)
   }
+
 }
