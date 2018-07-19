@@ -1,0 +1,68 @@
+<h1>Rate My Cakes 🎂</h1>
+<div class="wrapper">
+
+  <!-- Left section -->
+  <section class="left">
+
+    <!-- Create new cake -->
+    <div class="main-content">
+      <h2>Create a new cake</h2>
+      <form (submit)="createCake()">
+        <p>
+          <label for="bakersName">Baker's Name</label>
+          <input type="text" name="newCake.bakersName" [(ngModel)]="newCake.bakersName">
+        </p>
+        <p>
+          <label for="name">Cake's Name</label>
+          <input type="text" name="newCake.name" [(ngModel)]="newCake.name">
+        </p>
+        <p>
+          <label for="imageURL">Image URL</label>
+          <input type="text" name="newCake.imageURL" [(ngModel)]="newCake.imageURL">
+        </p>
+        <button type="submit">Add Cake</button>
+      </form>
+    </div>
+
+    <!-- Details on specific cake -->
+    <div class="main-content">
+      <h2>
+        Cake Details:
+      </h2>
+      <app-cake-details *ngIf="cakeDetails" [cakeDetailToShow]="cakeDetails" [averageRating]="cakeDetailsRating"></app-cake-details>
+    </div>
+  </section>
+
+  <!-- Right section -->
+  <section class="right">
+    <!-- Information about cakes -->
+    <div class="main-content">
+      <h2>All cakes:</h2>
+      <span *ngFor="let cake of allCakes" class="cake-info">
+        <p>Cake name: {{ cake.name }}</p>
+        <p>Average rating: {{ cake.rating }} </p>
+        <p>Baked by: {{ cake.bakersName }} </p>
+        <p></p>
+        <a (click)="getCakeInfo(cake._id)">
+          <img src="{{cake.imageURL}}" alt="">
+        </a>
+        <p>
+          <button (click)="showCommentRatingForm(cake._id)">Leave a review/rating</button>
+          <form *ngIf="showForm == cake._id" (submit)="createRatingAndComment(cake._id)">
+            <p>
+              <label for="comment">Comments</label>
+              <input type="text" name="cakeComment.text" [(ngModel)]="cakeComment.text">
+            </p>
+            <p>
+              <label for="rating">Rating</label>
+              <input type="number" name="newRating.value" [(ngModel)]="newRating.value">
+            </p>
+            <p *ngIf="true">
+              <button type="submit">Submit Rating and Review</button>
+            </p>
+          </form>
+          <hr>
+      </span>
+    </div>
+  </section>
+</div>

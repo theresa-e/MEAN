@@ -1,0 +1,16 @@
+<div class="main-content">
+  <img src="{{ cakeDetailToShow.imageURL }}" width="300px" />
+  <p>
+    <strong>Name</strong> {{ averageRating }}
+  </p>
+  <p>
+    <strong>Posted By</strong> {{ cakeDetailToShow.bakersName }}
+  </p>
+  <p>
+    <strong>Average Rating:</strong> {{ averageRating }}
+  </p>
+    <strong>Comments:</strong>
+  <p *ngFor="let comment of cakeDetailToShow.comments">
+    {{ comment }}
+  </p>
+</div>

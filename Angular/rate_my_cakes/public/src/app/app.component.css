@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+* {
+  font-family: "Roboto";
+}
+
+.wrapper {
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  height: 700px;
+}
+
+.left {
+  overflow: scroll;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.right {
+  overflow: scroll;
+  display: inline-block;
+  margin: 0 5px;
+  text-align: center;
+}
+
+.right button {
+  text-align: center;
+}
+
+.title {
+  font-size: 36px;
+}
+
+img {
+  max-width: 250px;
+  text-align: center;
+}
+
+.main-content {
+  border: 1px solid plum;
+  width: 600px;
+  padding: 10px;
+  margin: 5px 0;
+  align-content: center;
+}
+
+button {
+  border: none;
+  background-color: #8a5bac;
+  color: #fff;
+  width: 200px;
+  height: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 10px;
+}
+
+form {
+  width: 400px;
+  text-align: center;
+}
+
+p {
+  text-align: left;
+}
+
+.cake-info {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+p input {
+  float: right;
+}
+
+input {
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+h2,
+h1 {
+  text-align: center;
+}
+
+select {
+  height: 25px;
+  width: 100px;
+}
