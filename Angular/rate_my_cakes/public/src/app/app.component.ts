@@ -20,7 +20,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.newCake = { name: "", bakersName: "", imageURL: "", rating: "" } // reset values
-    this.cakeDetails = {}
+    this.cakeDetails = {};
+    this.cakeComment = { text: '' };
+    this.newRating = { value: 0 };
     this.getCakes(); // Have list of cakes on page once loaded.
   } 
 

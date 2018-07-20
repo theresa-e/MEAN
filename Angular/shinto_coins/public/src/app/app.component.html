@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <h1> Shinto Coins!</h1>
+  <div class="nav">
+    <a [routerLink]="['/home']">Home</a>
+    <a [routerLink]="['/mine']">Mine Coins</a>
+    <a [routerLink]="['/buy']">Buy Coins</a>
+    <a href="/sell">Sell Coins</a>
+    <a href="/ledger">Browse Ledger</a>
+  </div>
+
+  <div class="main">
+      <router-outlet></router-outlet>
+  </div>
+
+</div>

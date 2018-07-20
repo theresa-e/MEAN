@@ -1,0 +1,15 @@
+<h2>Mine Shinto Coins</h2>
+<p>Answer the question correctly to win a shinto coin:</p>
+<p>
+  {{ questionToDisplay[0] }}
+  <form (submit)="checkAnswer()">
+    <label for=""></label>
+    <input type="number" name="userAnswer" [(ngModel)]="userAnswer" [value]="userAnswer">
+    <p>
+      <button>Submit</button>
+    </p>
+  </form>
+
+  <p *ngIf="userAnswerResults">
+    {{ userAnswerResults }}
+  </p>
