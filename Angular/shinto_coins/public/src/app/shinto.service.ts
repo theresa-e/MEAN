@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ShintoService {
   numbers: number[]; // store coins
-  transactions: any; // will store all transactions
+  transactions: any; // will store all transactions, generate specific ID
+
   constructor() { }
 
   
@@ -13,9 +14,11 @@ export class ShintoService {
     return this.numbers;
   }
 
-  // All components will be able to use this.
+  // All components will use to add to number array
   addToNumbers(num): void {
     console.log('Adding this num to numbers array: ', num);
     this.numbers.push(num);
   }
+
+  // Function to generate random 
 }

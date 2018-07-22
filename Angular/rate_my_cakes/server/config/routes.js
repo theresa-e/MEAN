@@ -1,3 +1,4 @@
+var path = require("path")
 const mongoose = require('mongoose');
 var Cake = mongoose.model('Cake');
 const cakes = require('./../controllers/cakes.js')
@@ -19,5 +20,6 @@ module.exports = function (app) {
 
     app.post('/cakes/:id', (req, res) => {
         cakes.addRating(req, res);
-    })
+    }),
+    
 }

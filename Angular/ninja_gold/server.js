@@ -17,22 +17,5 @@ app.use(bodyParser.urlencoded({
 /* ---------- Mongoose ---------- */
 var mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://localhost/ninjaGold');
-// mongoose.Promise = global.Promise;
-// var GoldSchema = new mongoose.Schema({ // JS object that defines the schema (blueprint) 
-//     gold: {
-//         type: Number
-//     },
-//     messages: {
-//         type: Array,
-//         required: true,
-//         minLength: 3
-//     },
-// }, {
-//     timestamps: true
-// });
-// mongoose.model('Gold', GoldSchema)
-// var Gold = mongoose.model('Gold');
-
 /* ---------- Routing ---------- */
 require('./server/config/routes.js')(app)

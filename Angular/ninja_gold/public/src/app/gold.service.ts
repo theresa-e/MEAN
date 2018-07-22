@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 export class GoldService {
   constructor(private _gold: HttpClient) {
    }
-
    newGame(gold: any){
      return this._gold.post('/gold', gold);
    }

@@ -16,10 +16,10 @@ app.use(bodyParser.urlencoded({
 /* ---------- Static ---------- */
 app.use(express.static(__dirname + '/public/dist/public'));
 
-/* ---------- Mongoose ---------- */
-require('./server/models/author.js')
-require('./server/models/quote.js')
-require('./server/controllers/authors.js')
 
-/* ---------- Routing ---------- */
-require('./server/config/routes.js')(app)
+/* ---------- Routes ---------- */
+
+app.all("*", (req, res) => {
+    console.log('Redirecting user back to public/index.');
+    res.sendFile(path.resolve('./public/dist/public/index.html'));
+})

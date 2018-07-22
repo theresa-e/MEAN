@@ -70,7 +70,6 @@ module.exports = {
 
     // Update by ID
     updateTask: function (req, res) {
-        console.log("I'm going to update", req.body);
         Task.findOneAndUpdate({
             _id: req.body._id
         }, {
@@ -82,19 +81,16 @@ module.exports = {
         }, function (err, updatedTask) {
             // updatedTask.save(function (err, updatedTask){
             if (err) {
-                console.log("Updating wasn't working my dear.", err);
                 res.json({
                     message: "Error",
                     error: err
                 });
             }
             if (updatedTask == null) {
-                console.log("Your task is not found");
                 res.json({
                     message: "Error"
                 })
             } else {
-                console.log("You're task is updated", updatedTask);
                 res.json({
                     message: "Updated",
                     updatedTask: updatedTask

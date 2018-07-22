@@ -6,7 +6,7 @@ var GoldSchema = new mongoose.Schema({ // JS object that defines the schema (blu
     },
     messages: {
         type: Array,
-        required: true,
+        required: [true, "Message length should be at least 3 chars long."],
         minLength: 3
     },
 }, {

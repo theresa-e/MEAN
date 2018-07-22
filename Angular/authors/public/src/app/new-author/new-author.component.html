@@ -1,0 +1,10 @@
+<h2>Create a new author:</h2>
+<form (submit)="createAuthor()">
+  <p>
+    <label for="fullName" name="newAuthor.name" [(ngModel)]="newAuthor">Full Name:</label>
+  </p>
+  <input type="text">
+  <p>
+    <button>Submit</button>
+  </p>
+</form>
