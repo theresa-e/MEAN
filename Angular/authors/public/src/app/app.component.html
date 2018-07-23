@@ -1,9 +1,10 @@
-<div class="wrapper">
-  <h1>Favorite Authors</h1>
-  <div class="nav">
-    <a [routerLink]="['/newAuthor']">Add Author</a> | <a href="addQuote">Add Quote</a>
-  </div>
-  <div class="main">
-    <router-outlet></router-outlet>
+<div class="container has-text-centered">
+  <div class="block">
+
+    <h1 class="title is-size-1">Favorite Authors</h1>
+      <a class="button is-rounded is-danger" [routerLink]="['/newAuthor']">Add Author</a>
+    <div class="main">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

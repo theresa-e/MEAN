@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/authors');
-// Blueprint that defines the schema. 
+mongoose.model('Author', AuthorSchema);
 
 var AuthorSchema = new mongoose.Schema({
-    fullName: {
+    firstName: {
         type: String,
-        required: [true, "Name must be at least 3 chars long."],
+        required: [true, "First name must be at least 3 chars long."],
         minlength: 3
     },
-    quotes: []
+    lastName: {
+        type: String,
+        required: [true, "Last name must be at least 3 chars long."],
+        minlength: 3
+    }
 }, {
     timestamps: true
 });
-
-mongoose.model('Author', AuthorSchema);

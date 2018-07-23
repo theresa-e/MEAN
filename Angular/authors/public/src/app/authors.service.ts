@@ -9,7 +9,6 @@ export class AuthorsService {
   constructor(private _authors: HttpClient) { }
 
   createAuthor(author: any){
-    const tempObservable = this._authors.post('/authors', author);
-    tempObservable.subscribe(res => console.log('Created author: ', res));
+    return this._authors.post('/authors', author)
   }
 }

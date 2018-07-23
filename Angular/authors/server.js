@@ -13,13 +13,13 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+/* ---------- Mongoose ---------- */
+require('./server/models/author.js')
+require('./server/controllers/authors.js')
+
 /* ---------- Static ---------- */
 app.use(express.static(__dirname + '/public/dist/public'));
 
 
 /* ---------- Routes ---------- */
-
-app.all("*", (req, res) => {
-    console.log('Redirecting user back to public/index.');
-    res.sendFile(path.resolve('./public/dist/public/index.html'));
-})
+require('./server/config/routes.js')(app)

@@ -1,10 +1,17 @@
-<h2>Create a new author:</h2>
-<form (submit)="createAuthor()">
-  <p>
-    <label for="fullName" name="newAuthor.name" [(ngModel)]="newAuthor">Full Name:</label>
-  </p>
-  <input type="text">
-  <p>
-    <button>Submit</button>
-  </p>
-</form>
+<div class="container">
+  <h2>Create a new author:</h2>
+  <form (submit)="submitForm()">
+    <p>
+      <label for="fullName" name="firstName" [(ngModel)]="newAuthor.firstName">First Name:</label>
+    </p>
+    <input class="input is-large" type="text">
+    <p>
+      <p>
+        <label for="lastName" name="newAuthor.lastName" [(ngModel)]="newAuthor.lastName">Last Name:</label>
+      </p>
+      <input class="input is-large" type="text">
+      <p>
+        <button type="submit" class="button is-primary is-rounded">Submit</button>
+      </p>
+  </form>
+</div>
