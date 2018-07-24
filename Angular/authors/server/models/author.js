@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/authors');
-mongoose.model('Author', AuthorSchema);
 
 var AuthorSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        required: [true, "First name must be at least 3 chars long."],
-        minlength: 3
+        required: [true, "Please enter a first name."],
+        minlength: [3, "First name must be at least 3 chars long."]
     },
     lastName: {
         type: String,
-        required: [true, "Last name must be at least 3 chars long."],
-        minlength: 3
+        required: [true, "Please enter a last name."],
+        minlength: [3, "Last name must be at least 3 chars long."]
     }
 }, {
     timestamps: true
 });
+
+mongoose.model('Author', AuthorSchema);

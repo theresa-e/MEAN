@@ -20,6 +20,5 @@ require('./server/controllers/authors.js')
 /* ---------- Static ---------- */
 app.use(express.static(__dirname + '/public/dist/public'));
 
-
 /* ---------- Routes ---------- */
 require('./server/config/routes.js')(app)

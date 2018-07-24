@@ -6,14 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NewAuthorComponent } from './new-author/new-author.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewAuthorComponent,
-    PagenotfoundComponent,
     HomeComponent
   ],
   imports: [

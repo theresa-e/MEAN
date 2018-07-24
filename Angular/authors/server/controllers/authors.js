@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 require('../models/author.js');
-require('../models/quote.js');
 var Author = mongoose.model('Author');
-var Quote = mongoose.model('Quote');
 
 module.exports = {
     // Create a new author
